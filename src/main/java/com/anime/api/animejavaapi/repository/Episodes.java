@@ -17,11 +17,14 @@ public class Episodes {
     private int id;
     @Column(name = "title")
     private String title;
-    @Column(name = "href")
+    @Column(name = "video")
     private String href;
+    @Column(name = "url")
+    private String url;
 
-    public Episodes(String title, String href) {
+    public Episodes(String title, String href, String url) {
         this.title = title;
         this.href = href;
+        this.url = url;
     }
 }

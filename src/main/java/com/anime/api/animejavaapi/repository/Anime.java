@@ -4,6 +4,8 @@ import lombok.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

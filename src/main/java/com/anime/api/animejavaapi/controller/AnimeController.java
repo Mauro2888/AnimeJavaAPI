@@ -38,18 +38,8 @@ public class AnimeController {
 
     @GetMapping(value = "/href/{id}")
     public List<Episodes> getByAnimeHrefById(@PathVariable int id) throws IOException {
-
-        String hrefAnime = animeService.getHrefAnime(id);
-
-        return animeService.getAllEpisodes(hrefAnime);
-    }
-
-    @GetMapping(value = "/episodes/{name}")
-    public List<Episodes> getByAnimeHrefById(@PathVariable String name) throws IOException {
-
-        String nameAnime = animeService.getAnimeByName(name);
-
-        return animeService.getAllEpisodes(nameAnime);
+        String href = animeService.getHrefAnime(id);
+        return animeService.getAllEpisodes(href, id);
     }
 
 }

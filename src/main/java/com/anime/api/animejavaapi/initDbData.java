@@ -17,7 +17,6 @@ public class initDbData implements ApplicationRunner {
 
     private final AnimeRepository animeRepository;
 
-
     private final ScraperServiceAnime scraperServiceAnime;
 
     public initDbData(AnimeRepository animeRepository, ScraperServiceAnime scraperServiceAnime) {

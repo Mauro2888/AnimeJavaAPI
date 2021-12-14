@@ -19,6 +19,8 @@ public interface AnimeRepository extends JpaRepository<Anime, Integer> {
 
     List<Anime> findAnimeByTitleLike(String title);
 
+    List<Anime>findAnimeById(int id);
+
 
     //@Query("select a from Anime a where a.title like %?1%")
     //@Query("Select c from Anime c where c.title like %:title%")

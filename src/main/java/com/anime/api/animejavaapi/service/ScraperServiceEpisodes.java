@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,24 +17,17 @@ import java.util.stream.Collectors;
 public class ScraperServiceEpisodes {
 
     @SneakyThrows
-    public List<Episodes> scrapAllEpisodes(String url) {
+    public List<Episodes> scrapAllEpisodes(String url, int idAnime) {
 
         List<Episodes>episodes = new ArrayList<>();
 
-        Document document = Jsoup.connect(url)
-                .header("Accept-Encoding", "gzip, deflate")
-                .userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0")
-                .maxBodySize(0)
-                .timeout(500000)
-                .get();
+        List<Element> collect = JsoupConnection
+                .makeJsoupConnection(url)
+                .getElementsByClass("btn btn-dark mb-1").stream().collect(Collectors.toList());
 
-        List<Element> collect = document.getElementsByClass("btn btn-dark mb-1").stream().collect(Collectors.toList());
-        int count = 0;
         for (Element e:collect) {
-            System.out.println(e.attr("title"));
-            System.out.println(e.attr("href"));
-            count += 1;
-            episodes.add(new Episodes(count ,e.attr("title"),e.attr("href")));
+            Elements select = JsoupConnection.makeJsoupConnection(e.attr("href")).select("source");
+            episodes.add(new Episodes(e.attr("title"),e.attr("href"),select.first().attr("src")));
         }
 
         return episodes;

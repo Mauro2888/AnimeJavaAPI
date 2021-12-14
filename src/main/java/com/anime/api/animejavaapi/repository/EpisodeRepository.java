@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface EpisodeRepository extends JpaRepository<Episodes,Integer> {
-    List<Episodes> findById(int id);
+
+    List<Episodes>findByHref(String href);
+    List<Episodes>findByAnimeId(int id);
 }

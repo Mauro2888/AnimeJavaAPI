@@ -7,7 +7,6 @@ import com.anime.api.animejavaapi.repository.Episodes;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class AnimeService {
@@ -29,22 +28,16 @@ public class AnimeService {
     }
 
     public String getHrefAnime(int id){
-        List<Anime> all = repository.findAll();
+        List<Anime> all = repository.findAnimeById(id);
         return all.stream()
                 .filter(ids -> ids.getId() == id)
                 .map(Anime::getHref).findFirst().orElse("");
     }
 
-    public String getAnimeByName(String name){
-        List<Anime> all = repository.findAnimeByTitleLike(name);
-        return all.stream()
-                .filter(ids -> Objects.equals(ids.getTitle(), name))
-                .map(Anime::getHref).findFirst().orElse("Not found");
-    }
 
-
-    public List<Episodes>getAllEpisodes(String urls){
-        return scraperServiceEpisodes.scrapAllEpisodes(urls);
+    public List<Episodes>getAllEpisodes(String urls,int id){
+        List<Episodes> episodes = scraperServiceEpisodes.scrapAllEpisodes(urls, id);
+        return episodes;
     }
 
 
