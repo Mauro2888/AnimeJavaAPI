@@ -4,6 +4,8 @@ import com.anime.api.animejavaapi.repository.Anime;
 import com.anime.api.animejavaapi.repository.Episodes;
 import com.anime.api.animejavaapi.service.AnimeService;
 import com.anime.api.animejavaapi.service.ScraperServiceEpisodes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @RequestMapping(path = "api/v1/anime")
 public class AnimeController {
 
+    Logger LOG = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private AnimeService animeService;
