@@ -36,11 +36,8 @@ public class AnimeService {
 
 
     public List<Episodes>getAllEpisodes(String urls,int id){
-        List<Episodes> episodes = scraperServiceEpisodes.scrapAllEpisodes(urls, id);
-        return episodes;
+        return scraperServiceEpisodes.scrapAllEpisodes(urls, id);
     }
-
-
 
     public Anime getAnimeById(int id){
         return repository.findById(id);

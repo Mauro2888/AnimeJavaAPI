@@ -27,7 +27,7 @@ public class AnimeScheduler {
         this.scraperServiceAnime = scraperServiceAnime;
     }
 
-    @Scheduled(cron = MONTHLY)
+    //@Scheduled(cron = MONTHLY)
     public void scheduler() throws IOException {
         LOG.info("Update DB with new animes");
         List<Anime> animeList = scraperServiceAnime.scrapAllAnime();
