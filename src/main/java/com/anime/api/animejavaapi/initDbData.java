@@ -10,9 +10,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Component
+//@Component
 public class initDbData implements ApplicationRunner {
 
     private final AnimeRepository animeRepository;
@@ -27,7 +26,10 @@ public class initDbData implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         List<Anime> animeList = scraperServiceAnime.scrapAllAnime();
-        animeRepository.saveAll(animeList);
+        if (animeList.size() == 50){
+            animeRepository.saveAll(animeList);
+        }
+
     }
 
 

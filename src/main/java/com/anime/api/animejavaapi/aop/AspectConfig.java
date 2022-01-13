@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Configuration
-@Component
 @Aspect
 public class AspectConfig {
 
@@ -44,13 +43,13 @@ public class AspectConfig {
         LOG.info("Returning Object Response = " + returningObj);
     }*/
 
-    @Around(value = "execution(* com.anime.api.animejavaapi.controller.*.*(..)) && args(object)")
+   /* @Around(value = "execution(* com.anime.api.animejavaapi.controller.*.*(..)) && args(object)")
     //Combinations with Before and After so Request -> methods -> Response
     public void aroundAdvice(ProceedingJoinPoint proceedingJoinPoint, Object object) throws Throwable {
         LOG.info("Inside Around Advice");
         LOG.info("Request = " + object);
         Object returningObj = proceedingJoinPoint.proceed(); //this object is basically the response intercepted
         LOG.info("Response = " + returningObj);
-    }
+    }*/
 
 }
